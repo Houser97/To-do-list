@@ -9,7 +9,7 @@ html, body {
 }
 
 body{
-    background-color: rgb(15, 15, 37);
+    background-color: rgb(47, 27, 27);
     display: flex;
 }
 
@@ -17,17 +17,60 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
     flex: 1;
+    overflow-y: scroll;
+    padding: 2rem 3rem;
 }
 
 .card{
-    height: 15rem;
-    width: 13rem;
+    height: 21rem;
+    width: 15rem;
     background-color: white;
     border-radius: 15px;
-    border: 1px black solid;
+    border: 5px black solid;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 120%;
+}
+
+.card .title_card{
+    background-color: rgb(163, 233, 23);
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 150%;
+}
+
+.card .container{
+    padding: 0.5rem;
+    border-top: 1px solid black;
+}
+
+.card .container-description {
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card .container-description .description_card{
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.card .container-difficulty .priority_card{
     text-align: center;
-    padding: 3rem 2rem;
+}
+
+.card .dueDate_card{
+    text-align: center;
 }
 
 .nav-bar{
@@ -38,3 +81,8 @@ body{
     text-align: center;
 }
 
+.title-section{
+    height: 30px;
+    background-color: blueviolet;
+    position: relative;
+}
