@@ -4,32 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>To-do list</title>
 </head>
 <body>
-    <div class="nav-bar">Here goes all the projects.</div>
-    <div class="card-section">
-        <div class="card">
-            <div class="close-card">+</div>
-            <div class="title_card">Houser</div>
-            <div class="container-description container">
-                Description:
-                <div class="description_card">He is very dirsty, so we must get him washed.</div>
-            </div>
-            <div class="container-dueDate container">
-                Due date:
-                <div class="dueDate_card">March</div>
-            </div>
-            <div class="container-difficulty container">
-                Priority:
-                <div class="priority_card">High</div>
-            </div>
-            <div class="container-check container">
-                <input type="checkbox" id="check">
-                <label for="check">Done</label>
+<!--Header section-->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div> <!--Agrega simbolo 3 lineas-->
+
+        <div href="#" class="logo">
+            To do list
+        </div>
+
+        <nav class="navbar">
+            <a href="#home" class="option activeOption">Home</a>
+            <a href="#menu" class="option">Menu</a>
+            <a href="#contact" class="option">Contact</a>
+        </nav>
+    </header>
+    
+    <div class="body">
+        <div class="nav-bar">My lists</div>
+        <div class="card-section">
+            <div class="card">
+                <div class="close-card">+</div>
+                <div class="title_card">Houser</div>
+                <div class="container-description container">
+                    Description:
+                    <div class="description_card">He is very dirty, so we must get him washed.</div>
+                </div>
+                <div class="container-dueDate container">
+                    Due date:
+                    <div class="dueDate_card">March</div>
+                </div>
+                <div class="container-difficulty container">
+                    Priority:
+                    <div class="priority_card">High</div>
+                </div>
+                <div class="container-check container">
+                    <input type="checkbox" id="check">
+                    <label for="check">Done</label>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>
