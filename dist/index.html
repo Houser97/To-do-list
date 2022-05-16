@@ -48,15 +48,15 @@
     
     <div class="body">
         <div class="nav-bar">My lists
-            <ul class="task-list">
-                <li class="active-list">Math</li>
-                <li>Robot</li>
-                <li>Code</li>
+            <ul class="task-list" data-lists>
+                <li class="list-option active-list">Personal</li>
+                <li class="list-option">Work</li>
+                <li class="list-option">>School</li>
             </ul>
 
-            <form action="">
-                <input type="text" class="new list" placeholder="New list name" aria-label="New list name">
-                <button class="btn create" aria-label="Create new list">+</button>
+            <form action="" data-new-list-form>
+                <input type="text" class="new list" data-new-list-input placeholder="New list name" aria-label="New list name">
+                <button class="btn create createListBtn" aria-label="Create new list">+</button>
             </form>
         </div>
 <!--Body Task-->

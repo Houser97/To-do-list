@@ -14,7 +14,6 @@ html, body {
 
 body{
     background-color: #1a4ea7;
-    background-image: linear-gradient(315deg, #29539b 0%, #1a4ea7 74%);
     display: flex;
     flex-direction: column;
 }
@@ -73,7 +72,6 @@ header #menu-bar {
     flex-wrap: wrap;
     flex: 1;
     overflow-y: scroll;
-    
 }
 
 .card-section .todo-body{
@@ -228,10 +226,13 @@ header #menu-bar {
     background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
     height: 100%;
     padding: 2rem;
+    padding-bottom: 0;
     text-align: center;
     color: white;
     font-size: 3rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow-y: scroll;
+
 }
 
 .title-section{
