@@ -8,6 +8,29 @@
     <title>To-do list</title>
 </head>
 <body>
+    <!--Create task section-->
+    <div class="form-create-task">
+        <div class="card">
+            <div class="close-card">+</div>
+            <div class="title_card">Houser</div>
+            <div class="container-description container">
+                Description:
+                <div class="description_card">He is very dirty, so we must get him washed.</div>
+            </div>
+            <div class="container-dueDate container">
+                Due date:
+                <div class="dueDate_card">March</div>
+            </div>
+            <div class="container-difficulty container">
+                Priority:
+                <div class="priority_card">High</div>
+            </div>
+            <div class="container-check container">
+                <input type="checkbox" id="check">
+                <label for="check">Done</label>
+            </div>
+        </div>
+    </div>
 <!--Header section-->
     <header>
         <div id="menu-bar" class="fas fa-bars"></div> <!--Agrega simbolo 3 lineas-->
@@ -33,7 +56,7 @@
 
             <form action="">
                 <input type="text" class="new list" placeholder="New list name" aria-label="New list name">
-                <button class="btn list" aria-label="Create new list">+</button>
+                <button class="btn create" aria-label="Create new list">+</button>
             </form>
         </div>
 <!--Body Task-->
@@ -50,12 +73,26 @@
                             <span class="custom-checkbox"></span>
                             Get houser washed</label>
                     </div>
+
+                    <div class="task">
+                        <input type="checkbox" id = 'task-2'>
+                        <label for="task-2">
+                            <span class="custom-checkbox"></span>
+                            Get houser washed</label>
+                    </div>
+
+                    <div class="task">
+                        <input type="checkbox" id = 'task-3'>
+                        <label for="task-3">
+                            <span class="custom-checkbox"></span>
+                            Get houser washed</label>
+                    </div>
                 </div>
 
                 <div class="new-task-creator">
                     <form action="">
                         <input type="text" class="new task" placeholder="New task name" aria-label="New task name">
-                        <button class="btn task" aria-label="Create new task">+</button>
+                        <button class="btn create" aria-label="Create new task">+</button>
                     </form>
                 </div>
 
@@ -64,26 +101,6 @@
                     <button class="btn delete">Delete list</button>
                 </div>
             </div>
-            <!--<div class="card">
-                <div class="close-card">+</div>
-                <div class="title_card">Houser</div>
-                <div class="container-description container">
-                    Description:
-                    <div class="description_card">He is very dirty, so we must get him washed.</div>
-                </div>
-                <div class="container-dueDate container">
-                    Due date:
-                    <div class="dueDate_card">March</div>
-                </div>
-                <div class="container-difficulty container">
-                    Priority:
-                    <div class="priority_card">High</div>
-                </div>
-                <div class="container-check container">
-                    <input type="checkbox" id="check">
-                    <label for="check">Done</label>
-                </div>
-            </div> -->
         </div>
     </div>
 
