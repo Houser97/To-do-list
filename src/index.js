@@ -4,7 +4,7 @@ const LOCAL_STORAGE_LIST_KEY = 'task.list';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 
 const DOM = ((doc) => {
-
+    const listElement = doc.querySelector('[data-lists]');
     /*Funcion para guardar*/
     function save(lists){
         localStorage.setItem(LOCAL_STORAGE_LIST_KEY,JSON.stringify(lists));
@@ -18,7 +18,6 @@ const DOM = ((doc) => {
     /*-------*/
     /*Metodo que corre solo una vez para cargar los valores guardados*/
     const runOneTime = () => {
-        const listElement = doc.querySelector('[data-lists]');
         listElement.addEventListener('click', e => {
             if(e.target.tagName.toLowerCase() === 'li') {
                 navbar.selectedListId = e.target.dataset.listId;
@@ -31,7 +30,6 @@ const DOM = ((doc) => {
 
     function addElementList(e) {
         e.preventDefault();
-        const listElement = doc.querySelector('[data-lists]');
         /*Agregar clase de seleccionado a LI*/
         listElement.addEventListener('click', e => {
             if(e.target.tagName.toLowerCase() === 'li') {
@@ -71,27 +69,20 @@ const DOM = ((doc) => {
         }
     }
 
-    function removeHighlight() {
-        const listElements = doc.querySelectorAll('.list-option');
-        listElements.forEach(listElement => listElement.classList.remove('active-list'));
-    } 
-
-    function highlight(e) {
-        removeHighlight();
-        e.target.classList.add('active-list');
-    }
-
     const addNewListElement = () => {
         const newListForm = doc.querySelector('[data-new-list-form]');
         newListForm.addEventListener('submit', addElementList)
     }
-
-    const highlightCurrentList = () => {
-        const listElements = doc.querySelectorAll('.list-option');
-        listElements.forEach(listElement => listElement.addEventListener('click', highlight));
+  
+    const eraseCurrentList = () =>{
+        const buttonDelete = doc.querySelector('[data-erase-list]');
+        buttonDelete.addEventListener('click', e => {
+            navbar.lists = (navbar.lists).filter(list => list.id != navbar.selectedListId);
+            saveAndRender(listElement, navbar.lists);
+        })
     }
 
-    return {addNewListElement,highlightCurrentList, runOneTime};
+    return {addNewListElement, runOneTime, eraseCurrentList};
 })(document);
 
 
@@ -107,6 +98,6 @@ const navbar = ((doc)=>{
 })(document);
 
 DOM.addNewListElement();
-DOM.highlightCurrentList();
 DOM.runOneTime();
+DOM.eraseCurrentList();
 console.log('Houmser Weno');
