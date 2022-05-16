@@ -1,6 +1,25 @@
 import './style.css'
 
+const LOCAL_STORAGE_LIST_KEY = 'task.list'
+
 const DOM = ((doc) => {
+
+    /*Funcion para guardar*/
+    function save(lists){
+        localStorage.setItem(LOCAL_STORAGE_LIST_KEY,JSON.stringify(lists));
+    }
+
+    function saveAndRender(listElement, lists){
+        save(lists);
+        render(listElement, lists);
+    }
+    /*-------*/
+    /*Metodo que corre solo una vez para cargar los valores guardados*/
+    const runOneTime = () => {
+        const listElement = doc.querySelector('[data-lists]'); 
+        saveAndRender(listElement, navbar.lists);
+    }
+    /**/
 
     function addElementList(e) {
         e.preventDefault();
@@ -12,7 +31,7 @@ const DOM = ((doc) => {
         const list = navbar.createList(input.value);
         (navbar.lists).push(list);
         
-        render(listElement, navbar.lists);
+        saveAndRender(listElement, navbar.lists);
         input.value = null;
     }
 
@@ -56,17 +75,14 @@ const DOM = ((doc) => {
         listElements.forEach(listElement => listElement.addEventListener('click', highlight));
     }
 
-    return {addNewListElement,highlightCurrentList};
+    return {addNewListElement,highlightCurrentList, runOneTime};
 })(document);
-
-DOM.addNewListElement();
-DOM.highlightCurrentList();
 
 
 
 
 const navbar = ((doc)=>{
-    let lists = [];
+    let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 
     const createList = (name) => {
        return {id: Date.now().toString(), name: name, tasks: []}
@@ -74,5 +90,7 @@ const navbar = ((doc)=>{
     return {lists, createList};
 })(document);
 
-
+DOM.addNewListElement();
+DOM.highlightCurrentList();
+DOM.runOneTime();
 console.log('Houmser Weno');
