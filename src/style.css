@@ -350,9 +350,23 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
 
 /*Boton para borrar una lista*/
 .btn.delete {
-    background-color: #a7421a;
+    background-color: #a71a1a;
     padding: 1rem 2rem;
     border: 2px solid black;
     border-radius: 10px;
     font-size: 1.2rem;
+}
+
+.btn.create-task {
+    background-color: #1fa71a;
+    padding: 1rem 2rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.buttons-section {
+    display: flex;
+    gap: 40px;
+
 }
