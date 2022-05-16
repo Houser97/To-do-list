@@ -6,6 +6,7 @@
     box-sizing: border-box;
     text-transform: capitalize;
     transition: all .2s linear;
+    outline: none;
 }
 
 html, body {
@@ -13,8 +14,8 @@ html, body {
 }
 
 body{
-    background-color: #29539b;
-    background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
+    background-color: #1a4ea7;
+    background-image: linear-gradient(315deg, #29539b 0%, #1a4ea7 74%);
     display: flex;
     flex-direction: column;
 }
@@ -55,16 +56,46 @@ header #menu-bar {
     height: 100%;
 }
 
+.card-section .title-list-section{
+    background-color: aliceblue;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 9%;
+}
+
 .card-section{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 50px;
     flex: 1;
     overflow-y: scroll;
-    padding: 2rem 3rem;
 }
+
+.card-section .todo-body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.card-section .todo-body .tasks{
+    display: flex;
+    width: 100%;
+}
+
+.card-section .todo-body .task{
+    border-bottom: 2px solid silver;
+    display: flex;
+    width: 100%;
+}
+/*---------------------------------*/
 
 .card{
     height: 23rem;
@@ -73,7 +104,7 @@ header #menu-bar {
     border-radius: 15px;
     border: 5px black solid;
     text-align: left;
-    display: flex;
+    display: none;
     flex-direction: column;
     overflow: hidden;
     font-weight: 600;
@@ -166,13 +197,13 @@ header #menu-bar {
     border-color: green;
 }
 
-
+/* ----------------------------------------------Nav bar */
 .nav-bar{
     width: 20%;
     background-color: #29539b;
     background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
     height: 100%;
-    padding: 2rem;
+    padding: 2rem 3rem;
     text-align: center;
     color: white;
     font-size: 3rem;
@@ -183,4 +214,20 @@ header #menu-bar {
     height: 30px;
     background-color: blueviolet;
     position: relative;
+}
+
+.nav-bar .task-list{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 2rem;
+    line-height: 2rem;
+    list-style: circle;
+    font-weight: 0;
+}
+
+.nav-bar .task-list .active-list{
+    font-weight: bolder;
 }
