@@ -256,6 +256,7 @@ header #menu-bar {
 
 .nav-bar .task-list .active-list{
     font-weight: bolder;
+    color:rgb(163, 233, 23);
 }
 
 .nav-bar .task-list li {

@@ -1,12 +1,14 @@
 import './style.css'
 
-const LOCAL_STORAGE_LIST_KEY = 'task.list'
+const LOCAL_STORAGE_LIST_KEY = 'task.list';
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 
 const DOM = ((doc) => {
 
     /*Funcion para guardar*/
     function save(lists){
         localStorage.setItem(LOCAL_STORAGE_LIST_KEY,JSON.stringify(lists));
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, navbar.selectedListId);
     }
 
     function saveAndRender(listElement, lists){
@@ -16,7 +18,13 @@ const DOM = ((doc) => {
     /*-------*/
     /*Metodo que corre solo una vez para cargar los valores guardados*/
     const runOneTime = () => {
-        const listElement = doc.querySelector('[data-lists]'); 
+        const listElement = doc.querySelector('[data-lists]');
+        listElement.addEventListener('click', e => {
+            if(e.target.tagName.toLowerCase() === 'li') {
+                navbar.selectedListId = e.target.dataset.listId;
+                saveAndRender(listElement, navbar.lists);
+            }
+        })
         saveAndRender(listElement, navbar.lists);
     }
     /**/
@@ -24,6 +32,14 @@ const DOM = ((doc) => {
     function addElementList(e) {
         e.preventDefault();
         const listElement = doc.querySelector('[data-lists]');
+        /*Agregar clase de seleccionado a LI*/
+        listElement.addEventListener('click', e => {
+            if(e.target.tagName.toLowerCase() === 'li') {
+                navbar.selectedListId = e.target.dataset.listId;
+                saveAndRender(listElement, navbar.lists);
+            }
+        })
+        /*------*/
         let input = doc.querySelector('[data-new-list-input]');
 
         if(input.value == null || input.value === '') return;
@@ -42,8 +58,8 @@ const DOM = ((doc) => {
             li.classList.add('list-option');
             li.dataset.listId = list.id;
             li.innerText = list.name;
+            if(list.id == navbar.selectedListId) li.classList.add('active-list');
             listElement.appendChild(li);
-            console.log(li);
         })
         
 
@@ -83,11 +99,11 @@ const DOM = ((doc) => {
 
 const navbar = ((doc)=>{
     let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-
+    let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
     const createList = (name) => {
        return {id: Date.now().toString(), name: name, tasks: []}
     }
-    return {lists, createList};
+    return {lists, selectedListId, createList};
 })(document);
 
 DOM.addNewListElement();
