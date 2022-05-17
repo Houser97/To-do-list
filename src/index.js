@@ -5,6 +5,8 @@ const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 
 const DOM = ((doc) => {
     const listElement = doc.querySelector('[data-lists]');
+    const containerTasks = doc.querySelector('[data-container-tasks]');
+    const taskTemplate = doc.querySelector('.template1')
     /*Funcion para guardar*/
     function save(lists){
         localStorage.setItem(LOCAL_STORAGE_LIST_KEY,JSON.stringify(lists));
@@ -50,7 +52,20 @@ const DOM = ((doc) => {
     }
 
     function render (listElement, lists) {
-        clearNavBar(listElement)
+        clearNavBar(listElement);
+        renderList(listElement, lists);
+
+        const selectedList = lists.find(list => list.id === navbar.selectedListId);
+        if(selectedList == null){
+            containerTasks.style.display = 'none';
+        } else {
+            containerTasks.style.display = 'flex';
+            clearNavBar(containerTasks);
+            renderTasks(selectedList);
+        }    
+    }
+
+    function renderList(listElement, lists) {
         lists.forEach(list => {
             let li = doc.createElement('li');
             li.classList.add('list-option');
@@ -59,8 +74,19 @@ const DOM = ((doc) => {
             if(list.id == navbar.selectedListId) li.classList.add('active-list');
             listElement.appendChild(li);
         })
-        
+    }
 
+    function renderTasks(selectedList){
+        selectedList.tasks.forEach(task => {
+            const taskElement = doc.importNode(taskTemplate.content, true); 
+            const checkbox = taskElement.querySelector('input');
+                checkbox.id = task.id;
+                checkbox.complete = task.complete;
+            const label = taskElement.querySelector('label');      
+                label.htmlFor = task.id;
+                label.append(task.name);
+                containerTasks.appendChild(taskElement);
+        })
     }
 
     function clearNavBar (listElement) {
@@ -92,7 +118,11 @@ const navbar = ((doc)=>{
     let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
     let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
     const createList = (name) => {
-       return {id: Date.now().toString(), name: name, tasks: []}
+       return {id: Date.now().toString(), name: name, tasks: [{
+        id: 'Houmser',
+        name: 'test',
+        complete: true,
+       }]}
     }
     return {lists, selectedListId, createList};
 })(document);
