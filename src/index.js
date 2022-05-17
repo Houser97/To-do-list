@@ -19,6 +19,7 @@ const DOM = ((doc) => {
         const task = navbar.createTask(inputCreateTask.value);
 
         const selectedList = (navbar.lists).find(list => list.id === navbar.selectedListId);
+        if(selectedList==null) return;
         selectedList.tasks.push(task);
         
         saveAndRender(listElement, navbar.lists);
