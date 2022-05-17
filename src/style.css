@@ -1,4 +1,8 @@
-
+:root {
+    --navbar-background: #2A2E34;
+    --header-background: #1E2328;
+    --body-background: #D6D6D6;
+}
 
 *{
     padding: 0;
@@ -13,7 +17,7 @@ html, body {
 }
 
 body{
-    background-color: #1a4ea7;
+    
     display: flex;
     flex-direction: column;
 }
@@ -26,16 +30,17 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #F6F4E8;
+    background-color: var(--header-background);
     padding: 0.6rem 8%;
-    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0,0.3);
+    height: 80px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0,0.1);
 }
 
 
 header .logo { /*Aplica para la letra*/
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: bolder;
-    color: black;
+    color: white;
 }
 
 header #menu-bar {
@@ -82,6 +87,8 @@ header #menu-bar {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 2rem;
+    color: black;
+    background-color: var(--body-background);
 }
 
 .card-section .todo-body .tasks{
@@ -91,8 +98,8 @@ header #menu-bar {
 }
 
 .card-section .todo-body .task{
-    color: white;
-    border-bottom: 2px solid silver;
+    color: black;
+    border-bottom: 2px solid black;
     font-size: 20px;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -222,22 +229,21 @@ header #menu-bar {
 /* ----------------------------------------------Nav bar */
 .nav-bar{
     width: 20%;
-    background-color: #29539b;
-    background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
+    background-color: var(--navbar-background);
     height: 100%;
     padding: 2rem;
     padding-bottom: 0;
     text-align: center;
     color: white;
     font-size: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
     overflow-y: scroll;
 
 }
 
 .title-section{
     height: 30px;
-    background-color: blueviolet;
+    
     position: relative;
 }
 
@@ -272,7 +278,7 @@ header #menu-bar {
 
 .new{
     background-color: transparent;
-    color: inherit;
+    color: white;
     border: 0;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -328,7 +334,7 @@ form {
     display: inline-block;
     height: 15px;
     width: 15px;
-    border: 1px white solid;
+    border: 2px black solid;
     border-radius: 50%;
     margin-right: 10px;
     cursor: pointer;
@@ -341,8 +347,13 @@ form {
 }
 
 body input[type="checkbox"]:checked + label .custom-checkbox{
-    background-color: white;
-    box-shadow: inset 0 0 0 3px #1a4ea7;
+    background-color: #66BB6A;
+    box-shadow: inset 0 0 0 0px #2da02d;
+}
+
+body input[type="checkbox"]:checked + label .custom-checkbox{
+    background-color: #66BB6A;
+    box-shadow: inset 0 0 0 0px #2da02d;
 }
 
 .task label{
@@ -353,12 +364,14 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
 
 /*Boton para borrar una lista*/
 .btn.delete {
-    background-color: #a71a1a;
+    background-color: #c73535;
     padding: 1rem 2rem;
     border: 2px solid black;
     border-radius: 10px;
     font-size: 1.2rem;
     color: white;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .btn.create-task {
@@ -380,7 +393,7 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: green;
+    color: #1a4ea7;
 }
 
 .buttons-section .createTaskBtn {
@@ -389,6 +402,15 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
 }
 
 #buttons-section .new-task{
-    border: 2px rgb(163, 233, 23) solid;
-    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+#buttons-section .new-task::placeholder{
+    color: white;
+    font-size: 20px;
+    opacity: 0.6;
 }

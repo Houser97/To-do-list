@@ -7,6 +7,25 @@ const DOM = ((doc) => {
     const listElement = doc.querySelector('[data-lists]');
     const containerTasks = doc.querySelector('[data-container-tasks]');
     const taskTemplate = doc.querySelector('.template1')
+    const formCreateTask = doc.querySelector('[data-new-task-form]');
+    const inputCreateTask = doc.querySelector('[data-new-task-input]');
+
+    /*Seccion para crear tareas*/
+    formCreateTask.addEventListener('submit', e => {
+        e.preventDefault();
+
+        if(inputCreateTask.value == null || inputCreateTask.value === '') return;
+
+        const task = navbar.createTask(inputCreateTask.value);
+
+        const selectedList = (navbar.lists).find(list => list.id === navbar.selectedListId);
+        selectedList.tasks.push(task);
+        
+        saveAndRender(listElement, navbar.lists);
+        inputCreateTask.value = null;
+    })
+    /*----------------------------------*/
+
     /*Funcion para guardar*/
     function save(lists){
         localStorage.setItem(LOCAL_STORAGE_LIST_KEY,JSON.stringify(lists));
@@ -28,7 +47,7 @@ const DOM = ((doc) => {
         })
         saveAndRender(listElement, navbar.lists);
     }
-    /**/
+    /*----------------------------------------------*/
 
     function addElementList(e) {
         e.preventDefault();
@@ -118,13 +137,14 @@ const navbar = ((doc)=>{
     let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
     let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
     const createList = (name) => {
-       return {id: Date.now().toString(), name: name, tasks: [{
-        id: 'Houmser',
-        name: 'test',
-        complete: true,
-       }]}
+       return {id: Date.now().toString(), name: name, tasks: []}
     }
-    return {lists, selectedListId, createList};
+
+    const createTask = (name) => {
+        return {id: Date.now().toString(), name: name, complete: false}
+    }
+
+    return {lists, selectedListId, createList, createTask};
 })(document);
 
 DOM.addNewListElement();
