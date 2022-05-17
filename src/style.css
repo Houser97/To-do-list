@@ -274,7 +274,10 @@ header #menu-bar {
     background-color: transparent;
     color: inherit;
     border: 0;
-    border-bottom: 1px solid currentColor;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 15px;
+    border-bottom: 2px solid rgb(163, 233, 23);
     width: 100%;
     transition: border-bottom 150ms ease-in;
     order: 2;
@@ -301,7 +304,7 @@ form {
     padding: 0;
     border: 0;
     background: 0;
-    color: white;
+    color: rgb(163, 233, 23);
     cursor: pointer;
 }
 
@@ -355,6 +358,7 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
     border: 2px solid black;
     border-radius: 10px;
     font-size: 1.2rem;
+    color: white;
 }
 
 .btn.create-task {
@@ -365,8 +369,26 @@ body input[type="checkbox"]:checked + label .custom-checkbox{
     font-size: 1.2rem;
 }
 
-.buttons-section {
+#buttons-section {
     display: flex;
+    flex-direction: row;
     gap: 40px;
+    align-items: center;
+}
 
+.buttons-section .newTask{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+}
+
+.buttons-section .createTaskBtn {
+    display: flex;
+    align-self: center;
+}
+
+#buttons-section .new-task{
+    border: 2px rgb(163, 233, 23) solid;
+    padding: 5px;
 }

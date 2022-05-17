@@ -10,10 +10,10 @@
 <body>
     <!--Create task section-->
     <div class="form-create-task">
-        <div class="card">
+        <form class="card">
             <div class="close-card">+</div>
             <div class="title_card">Houser</div>
-            <div class="container-description container">
+            <!--<div class="container-description container">
                 Description:
                 <div class="description_card">He is very dirty, so we must get him washed.</div>
             </div>
@@ -24,12 +24,14 @@
             <div class="container-difficulty container">
                 Priority:
                 <div class="priority_card">High</div>
-            </div>
-            <div class="container-check container">
+            </div>-->
+            <!--<div class="container-check container">
                 <input type="checkbox" id="check">
-                <label for="check">Done</label>
+                <label for="check">Done</label>-->
+            <div class="container-check container">
+                <button type="submit">Create task</button>
             </div>
-        </div>
+        </form>
     </div>
 <!--Header section-->
     <header>
@@ -39,9 +41,15 @@
             To do list
         </div>
 
-        <div class="delete-stuff buttons-section">
+        <div class="delete-stuff buttons-section" id="buttons-section">
             <button class="btn delete" data-erase-list>Delete list</button>
-            <button class="btn create-task" data-create-task>New task</button>
+            <!--<button class="btn create-task" data-create-task>New task</button>-->
+            <div class="formCreateTask">   
+                <form action="" data-new-task-form class="newTask">
+                    <input type="text" class="new task new-task" data-new-task-input placeholder="New task name" aria-label="New task name">
+                    <button class="btn create createTaskBtn" aria-label="Create new task">+</button>
+                </form>
+            </div> 
         </div>
     </header>
     
